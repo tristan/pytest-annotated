@@ -1,0 +1,32 @@
+[project]
+name = "pytest-annotated"
+version = "0.1.0"
+description = "Pytest plugin to allow use of Annotated in tests to resolve fixtures"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pytest>=8.3.3",
+]
+
+[project.entry-points.pytest11]
+pytest_annotated = "pytest_annotated"
+
+[tool.uv]
+dev-dependencies = [
+    "mypy>=1.11.2",
+    "ruff>=0.6.8",
+]
+
+[tool.ruff.lint]
+ignore = ["E501"]
+select = [
+    "E",      # pycodestyle error https://docs.astral.sh/ruff/rules/#error-e
+    "F",      # pyflakes https://docs.astral.sh/ruff/rules/#pyflakes-f
+    "G",      # flake8-logging-formate https://docs.astral.sh/ruff/rules/#flake8-logging-format-g
+    "I",      # isort https://docs.astral.sh/ruff/rules/#isort-i
+    "ISC",    # flake8-implicit-str-concat https://docs.astral.sh/ruff/rules/#flake8-implicit-str-concat-isc
+    "PIE",    # flake8-pie https://docs.astral.sh/ruff/rules/#flake8-pie-pie
+    "TID",    # flake8-tidy-imports https://docs.astral.sh/ruff/rules/#flake8-tidy-imports-tid
+    "UP",     # pyupgrade https://docs.astral.sh/ruff/rules/#pyupgrade-up
+    "W",      # pycodestyle warning https://docs.astral.sh/ruff/rules/#warning-w
+]

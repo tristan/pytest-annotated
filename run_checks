@@ -1,0 +1,10 @@
+#!/bin/bash
+if [[ -n "${1+x}" && "${1}" == "--fix" ]]; then
+    uv run ruff check --fix
+    uv run ruff format
+else
+    uv run mypy .
+    uv run ruff check
+    uv run ruff format --check
+    uv run pytest
+fi

@@ -4,3 +4,4 @@ pytest_annotated.egg-info
 .python-version
 # TODO: should we actually commit uv.lock?
 uv.lock
+publish

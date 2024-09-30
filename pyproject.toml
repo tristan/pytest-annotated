@@ -1,15 +1,28 @@
 [project]
 name = "pytest-annotated"
-version = "0.1.0"
+version = "0.1.1"
 description = "Pytest plugin to allow use of Annotated in tests to resolve fixtures"
 readme = "README.md"
 requires-python = ">=3.10"
+authors = [
+  { name = "Tristan King", email = "git@tristan.sh" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
 dependencies = [
     "pytest>=8.3.3",
 ]
 
 [project.entry-points.pytest11]
 pytest_annotated = "pytest_annotated"
+
+[project.urls]
+Homepage = "https://github.com/tristan/pytest-annotated"
+Issues = "https://github.com/tristan/pytest-annotated/issues"
+
 
 [tool.uv]
 dev-dependencies = [

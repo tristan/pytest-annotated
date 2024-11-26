@@ -1,0 +1,34 @@
+name: Linting and testing
+
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  linting-and-testing:
+    name: python
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Install the project
+        run: uv sync --all-extras --dev
+
+      - name: Run mypy
+        run: uv run mypy .
+
+      - name: Run ruff check
+        run: uv run ruff check
+
+      - name: Run ruff format --check
+        run: uv run ruff format --check
+
+      - name: Run tests
+        run: uv run pytest tests

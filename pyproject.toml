@@ -23,6 +23,9 @@ pytest_annotated = "pytest_annotated"
 Homepage = "https://github.com/tristan/pytest-annotated"
 Issues = "https://github.com/tristan/pytest-annotated/issues"
 
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
 [tool.uv]
 dev-dependencies = [

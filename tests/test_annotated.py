@@ -73,3 +73,58 @@ def test_fixture_with_missing_annotation(pytester: Pytester):
         in line
         for line in result.stderr.lines
     )
+
+
+def test_builtin_fixture_aliases(pytester: Pytester):
+    pytester.makeconftest(
+        """
+        pytest_plugins = ["pytest_annotated"]
+        """
+    )
+    pytester.makepyfile(
+        """
+        from pytest_annotated.builtins import (
+            CapfdFixture,
+            CapfdbinaryFixture,
+            CaplogFixture,
+            CapsysFixture,
+            CapsysbinaryFixture,
+            CacheFixture,
+            DoctestNamespaceFixture,
+            MonkeypatchFixture,
+            PytestconfigFixture,
+            RecordPropertyFixture,
+            RecordTestsuitePropertyFixture,
+            RecwarnFixture,
+            RequestFixture,
+            TestdirFixture,
+            TmpPathFixture,
+            TmpPathFactoryFixture,
+            TmpdirFactoryFixture,
+        )
+
+        def test_builtin_aliases(
+            a: CapfdFixture,
+            b: CapfdbinaryFixture,
+            c: CaplogFixture,
+            d: CapsysFixture,
+            e: CapsysbinaryFixture,
+            f: CacheFixture,
+            g: DoctestNamespaceFixture,
+            h: MonkeypatchFixture,
+            i: PytestconfigFixture,
+            j: RecordPropertyFixture,
+            k: RecordTestsuitePropertyFixture,
+            l: RecwarnFixture,
+            m: RequestFixture,
+            n: TestdirFixture,
+            o: TmpPathFixture,
+            p: TmpPathFactoryFixture,
+            q: TmpdirFactoryFixture,
+        ):
+            pass
+        """
+    )
+
+    result = pytester.runpytest()
+    result.assert_outcomes(passed=1)
